@@ -1,0 +1,32 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "This is task scheduling application",
+  "main": "server.js",
+  "scripts": {
+    "dev":"nodemon server.js",
+    "start":"node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/paullaster/task_scheduler.git"
+  },
+  "keywords": [
+    "NODEJS",
+    "EXPRESSJS",
+    "PERN",
+    "PSQL"
+  ],
+  "author": "paullaster",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/paullaster/task_scheduler/issues"
+  },
+  "homepage": "https://github.com/paullaster/task_scheduler#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.3",
+    "pg": "^8.7.3"
+  }
+}
