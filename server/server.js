@@ -3,25 +3,38 @@
  */
 const express = require('express');
 
-
 /**
  * Instantiate the app instance
  */
 const app = express();
 
 /**
+ * Importing app modules
+ */
+ const config = require('./config/index');
+ const router = require("./routes/routes");
+ 
+/**
  * App variables
  */
-const PORT = 6000;
+const port = config.PORT;
 
 /**
  * App settings
  */
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
+
+/**
+ * Calling middlewares
+ */
+app.use(router);
+
+
+
 /**
  * Starting server
  */
-app.listen(PORT, ()=>{
-    console.log(`Server is running on PORT: ${PORT}`);
+app.listen(port, ()=>{
+    console.log(`Server is running on PORT: ${port}`);
 });
