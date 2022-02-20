@@ -11,6 +11,6 @@ INSERT INTO users(
 phone,
 password
 ) VALUES(
-'0722222222',
-crypt('123456', gen_salt('bf'))
+'0723232323',
+crypt('123456', gen_salt('bf',8))
 );

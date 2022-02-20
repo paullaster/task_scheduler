@@ -12,7 +12,17 @@ module.exports = (sequelize, Sequelize) =>{
         },
         name: {
             type: Sequelize.STRING
-        }
+        },
+        createdAt: {
+            allowNull: false,
+            defaultValue: new Date(),
+            type: Sequelize.DATE
+          },
+          updatedAt: {
+            allowNull: false,
+            defaultValue: new Date(),
+            type: Sequelize.DATE
+          }
     });
     return Role;
 }
