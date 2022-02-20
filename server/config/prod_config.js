@@ -5,4 +5,8 @@ module.exports = {
     DB_PORT: process.env.DB_PORT,
     PORT: process.env.PORT,
     DATABASE: process.env.DATABASE,
+     /**
+     * App secrets
+     */
+      JWT_SECRET: process.env.JWT_SECRET,
 };

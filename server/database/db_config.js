@@ -1,8 +1,7 @@
 /**
  * Connecting to the Database
- * using the pg library
+ * 
  */
-const Pool = require("pg").Pool;
 
 /**
  * Importing configuration module
@@ -10,12 +9,19 @@ const Pool = require("pg").Pool;
 const config = require("../config/index");
 
 
-const pool = new Pool({
+const pool = {
     user: config.USER,
     password: config.PASSWORD,
     host:config.HOST,
     port: config.DB_PORT,
     database: config.DATABASE,
-});
+    dialect: "postgres",
+    pool:{
+        max: 10,
+        min:0,
+        acquire: 30000,
+        idle: 10000
+    },
+};
 
 module.exports = pool;
