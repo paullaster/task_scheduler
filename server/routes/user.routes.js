@@ -22,12 +22,34 @@ module.exports = function(app){
         );
         next();
     });
-
+    /**
+     * Fetch for public content
+    */
+     app.get(
+        "/task/public",
+        controller.publiccontent
+    );
+    /**
+     * Fetch task for logged user
+     */
+     app.get(
+        "/task/loggeduser",
+        [authjwt.verifyToken],
+        controller.normalusercontent
+    );
+    /**
+     * Fetch task for moderator
+     */
+     app.get(
+        "/task/moderator",
+        [authjwt.verifyToken, authjwt.isModerator],
+        controller.moderatorcontent
+    );
     /**
      * Fetch task for admin user
      */
     app.get(
-        "task/assigned",
+        "/task/assigned",
         [authjwt.verifyToken, authjwt.isAdmin],
         controller.admincontent
     );

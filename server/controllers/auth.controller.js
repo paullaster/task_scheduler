@@ -20,6 +20,60 @@ const config = require("../config/index");
  */
 const User = db.user;
 const Role = db.role;
+const Op = db.Sequelize.Op;
+
+/**
+ * User sign up
+ * @param {*} req 
+ * @param {*} res 
+ */
+
+exports.signup = (req,res)=>{
+    /**
+     * Save to DB
+     */
+    User.create({
+        phone: req.body.phone,
+        password: bcrypt.hashSync(req.body.password, 8)
+    })
+    .then((user)=>{
+        if(req.body.roles){
+            Role.findAll({
+                where:{
+                   name:{
+                       [Op.or]: req.body.roles
+                   } 
+                }
+            })
+            .then((roles)=>{
+                user.setRoles(roles)
+                .then(()=>{
+                    res
+                    .send({
+                        message:"User successfully registered!"
+                    });
+                });
+            });
+        }else{
+            /**
+             * When no role is provided, one automatically becomes a user
+             */
+            user.setRoles([1])
+            .then(()=>{
+                res.send({
+                    message: "USer successfully registered!"
+                });
+            });
+        }
+    })
+    .catch((err)=>{
+        res
+        .status(500)
+        .send({
+            message: err.message
+        });
+    });
+};
 
 /**
  * Signin
@@ -66,6 +120,7 @@ exports.signin = (req,res)=>{
                 phone: user.phone,
                 roles: authorities,
                 accessToken: token,
+                "expires_in": "24h",
             });
         });
     })

@@ -5,6 +5,7 @@
 /**
  * Importing app modules
  */
+const {verifySignUp} = require("../middlewares/index");
 const controller = require("../controllers/auth.controller");
 
 /**
@@ -21,6 +22,17 @@ module.exports = function(app){
         );
         next();
     });
+    /**
+     * Signup route
+     */
+    app.post(
+        "/personnel/signup",
+        [
+            verifySignUp.checkDuplicatePhone,
+            verifySignUp.checkRoleExisted
+        ],
+        controller.signup
+    )
 
     /**
      * Signin route
