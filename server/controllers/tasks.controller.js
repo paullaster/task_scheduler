@@ -37,7 +37,7 @@ function generateTask(){
            customer_last_name : last_name_list[(Math.floor(Math.random() * last_name_list.length))],
            personnel_first_name: first_name_list[(Math.floor(Math.random() * first_name_list.length))],
            personnel_laster_name: last_name_list[(Math.floor(Math.random() * last_name_list.length))],
-           customer_phone: `+254${(Math.floor(Math.random() * 900000000 ) + 1000000)}`,
+           customer_phone: `+2547${(Math.floor(Math.random() * 90000000 ) + 1000000)}`,
            completed: completed[(Math.floor(Math.random() * completed.length))],
            status: status[(Math.floor(Math.random() * status.length))],
            gender: gender[(Math.floor(Math.random() *gender.length))],
