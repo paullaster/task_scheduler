@@ -1,4 +1,10 @@
 /**
+ * Imports tasks
+ * @param {*} req 
+ * @param {*} res 
+ */
+const tasks = require("./tasks.controller");
+/**
  * Public access
  * User do not have to be loged in to view this content
  * @param {*} req 
@@ -36,7 +42,13 @@ exports.moderatorcontent = (req, res)=>{
  *  admin user access
  */
 exports.admincontent = (req,res)=>{
+    const {page, limit} = req.query;
     res
     .status(200)
-    .send("Admin content");
+    .send({
+        totalTasks: tasks().length,
+        page,
+        perPage : limit,
+        task: tasks()
+    });
 }
