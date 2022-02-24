@@ -19,7 +19,7 @@ const Login = ({ setAuth }) => {
     try {
       const body = { phone, password };
       const response = await fetch(
-        "http://localhost:6000/personnel/login",
+        "/personnel/login",
         {
           method: "POST",
           headers: {

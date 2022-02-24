@@ -18,7 +18,7 @@ const Register = ({ setAuth }) => {
     try {
       const body = { phone, password, roles };
       const response = await fetch(
-        "http://localhost:6000/personnel/signup",
+        "/personnel/signup",
         {
           method: "POST",
           headers: {
