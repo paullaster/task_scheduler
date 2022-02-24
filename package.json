@@ -3,10 +3,15 @@
   "version": "1.0.0",
   "description": "This is task scheduling application",
   "main": "server.js",
+  "engines":{
+     "node": "16.14.0",
+     "npm":"8.3.1"
+  },
   "scripts": {
     "dev": "nodemon server.js",
     "start": "node server.js",
-    "test": "jest --watchAll --verbose"
+    "test": "jest --watchAll --verbose",
+    "heroku-postbuild":"cd client && npm install && npm run build"
   },
   "repository": {
     "type": "git",

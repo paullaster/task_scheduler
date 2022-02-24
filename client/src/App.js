@@ -21,7 +21,7 @@ toast.configure();
 function App() {
   const checkAuthenticated = async () => {
     try {
-      const res = await fetch("http://localhost:6000/task/assigned", {
+      const res = await fetch("/task/assigned", {
         method: "GET",
         headers: { "x-access-token": localStorage.token }
       });
