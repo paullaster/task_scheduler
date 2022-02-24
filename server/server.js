@@ -3,6 +3,7 @@
  */
 const express = require('express');
 const cors = require("cors");
+const path = require('path');
 
 /**
  * Instantiate the app instance
@@ -32,6 +33,7 @@ const port = config.PORT;
 app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
+app.use(express.static(path.join(__dirname, 'client/build')))
 
 /**
  * Aplication routes
@@ -43,7 +45,9 @@ require("./routes/user.routes")(app);
  * Defining roles
  */
 const Role = db.role;
-db.sequelize.sync()
+db.sequelize.sync({
+    force: true,
+})
 .then( ()=>{
     console.log("Resync DB");
     initial();
