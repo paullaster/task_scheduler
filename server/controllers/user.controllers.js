@@ -46,9 +46,10 @@ exports.admincontent = (req,res)=>{
     res
     .status(200)
     .send({
+        tasks: {
         totalTasks: tasks().length,
         page,
         perPage : limit,
         task: tasks()
-    });
+    }});
 }
